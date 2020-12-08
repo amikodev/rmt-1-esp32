@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>RMT-1</title>
+
+        <link rel="stylesheet" href="style.css" />
+
+
+        <style>
+            * {
+                touch-action: manipulation;
+            }
+        </style>
+    
+    </head>
+    <body>
+
+        <div class="container">
+            <header>RMT-1</header>
+
+            <div class="content">
+            
+                <div class="joystick-container">
+                    <div class="joystick"></div>
+                    <div class="pointer"></div>
+                </div>
+
+                <!-- <div class="engine-container">
+                    <button class="engine-state">-</button>
+                </div>
+
+                <div class="toplight-container">
+                    <button class="toplight-state">Свет</button>
+                </div> -->
+
+                <div class="work-device work-device-up">
+                    <button>Вверх</button>
+                </div>
+                <div class="work-device work-device-down">
+                    <button>Вниз</button>
+                </div>
+
+                <hr/>
+
+                <div class="scenario-container">
+                    <button class="btnScenario" data-value="1">Run right</button>
+                    <button class="btnScenario" data-value="2">Run left</button>
+                </div>
+
+                <hr/>
+
+                <div class="row">
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="1">1</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="2">2</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="3">3</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="4">4</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="5">5</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="6">6</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="7">7</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="8">8</button>
+                    </div>
+                    <div class="column col-3">
+                        <button class="btnTrack" data-value="9">9</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <textarea id="debug"></textarea>
+                </div>
+
+
+                <div class="clear"></div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript" src="main.js"></script>
+
+    </body>
+</html>

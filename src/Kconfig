@@ -1,0 +1,19 @@
+menu "RMT1"
+
+config RMT1_WIFI
+    bool "Wifi"
+    default true
+
+config RMT1_BLUETOOTH
+    bool "Bluetooth"
+    default false
+
+config RMT1_SHIFTLOAD
+    bool "ShiftLoad"
+    default false
+
+config RMT1_R8EF
+    bool "R8EF"
+    default false
+
+endmenu

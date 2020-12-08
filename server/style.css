@@ -1,0 +1,214 @@
+* {
+    touch-action: manipulation;
+}
+
+body{
+
+    background-color: #DDD;
+    padding: 0;
+    margin: 0;
+
+}
+
+
+h4{
+
+}
+
+.container{
+    width1: 1000px;
+    background-color: #EEE;
+    margin: 0 auto;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    font-size: 2rem;
+}
+
+.container header{
+
+    font-size: 4rem;
+    text-align: center;
+    background-color: #444;
+    color: #FFF;
+    margin-bottom: 20px;
+    font-family: Verdana;
+    padding: 5px 0;
+
+}
+
+.content{
+    padding: 1rem;
+
+    position: relative;
+}
+
+.clear{
+    clear: both;
+}
+
+.row{
+    clear: both;
+}
+
+.column{
+    float: left;
+}
+.column.col-1{
+    width: 10%;
+}
+.column.col-2{
+    width: 20%;
+}
+.column.col-3{
+    width: 30%;
+}
+.column.col-4{
+    width: 40%;
+}
+.column.col-5{
+    width: 50%;
+}
+.column.col-6{
+    width: 60%;
+}
+.column.col-7{
+    width: 70%;
+}
+.column.col-8{
+    width: 80%;
+}
+.column.col-9{
+    width: 90%;
+}
+.column.col-10{
+    width: 100%;
+}
+
+
+#debug{
+    width: 93%;
+    height: 13rem;
+    font-size: 1rem;
+    margin-top1: 1rem;
+    padding: 0 2rem;
+    margin: 1rem auto;
+    position: relative;
+    font-size1: 25px;
+    margin-top1: 20px;
+}
+
+.joystick-container{
+    border: solid 1px #000;
+    display: inline-block;
+    position: relative;
+}
+.joystick{
+    width: 512px;
+    height: 512px;
+    margin: 1px;
+    cursor: crosshair;
+}
+.joystick-container .pointer{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    border: 1px #000 solid;
+    background-color: #CCC;
+    position: absolute;
+}
+
+
+/* engine */
+.engine-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.engine-state{
+    width: 300px;
+    height: 200px;
+    font-size: 50px;
+}
+.engine-state.on{
+    background-color: #DDD;
+}
+.engine-state.starter{
+    background-color: #F00;
+}
+
+
+/* toplight */
+.toplight-container{
+    position: absolute;
+    top: 250px;
+    right: 0;
+}
+.toplight-state{
+    width: 300px;
+    height: 200px;
+    font-size: 50px;
+}
+.toplight-state.on{
+    background-color: #080;
+    color: #FFF;
+}
+
+/* work-device */
+.work-device{
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+.work-device-down{
+    top: 250px;
+}
+.work-device button{
+    width: 300px;
+    height: 200px;
+    font-size: 50px;
+
+}
+
+
+html, body{
+    height: 100%;
+    overflow: hidden;
+
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.btnTrack{
+    width: 98%;
+    margin-bottom: 10px;
+    height: 150px;
+    font-size: 50px;
+    background-color: #EEE;
+}
+.btnTrack.active{
+    background-color: #080;
+    color: #FFF;
+}
+
+
+.btnScenario{
+    width1: 98%;
+    margin-bottom: 10px;
+    height: 150px;
+    font-size: 50px;
+    background-color: #EEE;
+    padding: 0 30px;
+}
+.btnScenario.active{
+    background-color: #080;
+    color: #FFF;
+}
+
+
+
+
