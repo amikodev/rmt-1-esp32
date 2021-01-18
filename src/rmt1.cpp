@@ -1,6 +1,6 @@
 /*
 amikodev/rmt-1-esp32 - Robot mini tractor on esp-idf
-Copyright © 2020 Prihodko Dmitriy - prihdmitriy@yandex.ru
+Copyright © 2020 Prihodko Dmitriy - asketcnc@yandex.ru
 */
 
 /*
