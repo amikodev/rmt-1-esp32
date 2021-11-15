@@ -43,8 +43,8 @@ Component config --->
 * По Bluetooth - джойстик Magicsee R1
 
 ## Электрическая схема
-![scheme-1](git.docs/scheme-1.png?raw=true "Схема 1")
-![scheme-2](git.docs/scheme-2.png?raw=true "Схема 2")
+![scheme-1](git.docs/scheme-1.jpg?raw=true "Схема 1")
+![scheme-2](git.docs/scheme-2.jpg?raw=true "Схема 2")
 
 ## Компоненты блока управления
 * Аварийный выключатель
