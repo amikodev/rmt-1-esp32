@@ -89,14 +89,16 @@ void app_main() {
 #if CONFIG_RMT1_WIFI
     // Wifi
     Wifi wifi;
-    wifi.setupAP();
+    wifi.setup();
     // wifi.recieveBinary([](uint8_t *data, uint32_t length){
     //     printf("recieve binary length: %d \n", length);
     //     RMT1::parseWsData(data, length);
     // });
     wifi.recieveBinary(RMT1::parseWsData);
 
-    ws_server_start();
+    #if CONFIG_AMIKODEV_WIFI_USE_WEBSOCKET
+        ws_server_start();
+    #endif
     xTaskCreate(&Wifi::serverTask, "server_task", 3000, NULL, 9, NULL);
     xTaskCreate(&Wifi::serverHandleTask, "server_handle_task", 4000, NULL, 6, NULL);
     // xTaskCreate(&Wifi::countTask, "count_task", 6000, NULL, 2, NULL);
@@ -138,7 +140,9 @@ void app_main() {
 
 #if CONFIG_RMT1_WIFI
     wifi.apStaDisconnect(RMT1::clientDisconnected);
-    wifi.wsDisconnect(RMT1::clientDisconnected);
+    #if CONFIG_AMIKODEV_WIFI_USE_WEBSOCKET
+        wifi.wsDisconnect(RMT1::clientDisconnected);
+    #endif
 #endif      // CONFIG_RMT1_WIFI
 
 #if CONFIG_RMT1_BLUETOOTH
