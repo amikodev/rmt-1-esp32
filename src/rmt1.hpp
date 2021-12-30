@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <stdio.h>
 #include <string.h>
-
+#include <functional>
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -59,6 +59,11 @@ class RMT1{
 public: 
 
     static const uint8_t PIN_NOT_USED = 255;
+
+    struct WsData{
+        uint64_t size;
+        void *ptr;
+    };
 
     enum ControlLoadNum{
         CONTROL_LEFT_UP = 7,
@@ -131,20 +136,12 @@ private:
 
     static const char* LOG_NAME;
 
-// #define FREQ_CONVERTER_WS_OBJ_NAME_ENGINE 0x50
-// #define FREQ_CONVERTER_WS_OBJ_NAME_FREQ 0x51
-// #define FREQ_CONVERTER_WS_OBJ_NAME_DIRECTION 0x52
-
-// #define FREQ_CONVERTER_WS_CMD_READ 0x01
-// #define FREQ_CONVERTER_WS_CMD_WRITE 0x02
-
-// #define FREQ_CONVERTER_WS_ENGINE_STATE_RUN 0x01
-// #define FREQ_CONVERTER_WS_ENGINE_STATE_STOP 0x02
-    static const uint8_t WS_OBJNAME_TRACK;
-    static const uint8_t WS_OBJNAME_SCENARIO;
-    static const uint8_t WS_OBJNAME_ENGINE;
-    static const uint8_t WS_OBJNAME_TOPLIGHT;
-    static const uint8_t WS_OBJNAME_WORK_DEVICE;
+    static const uint8_t WS_OBJ_NAME_DEVICE;
+    static const uint8_t WS_OBJ_NAME_TRACK;
+    static const uint8_t WS_OBJ_NAME_SCENARIO;
+    static const uint8_t WS_OBJ_NAME_ENGINE;
+    static const uint8_t WS_OBJ_NAME_TOPLIGHT;
+    static const uint8_t WS_OBJ_NAME_WORK_DEVICE;
 
     static const uint8_t WS_CMD_READ;
     static const uint8_t WS_CMD_WRITE;

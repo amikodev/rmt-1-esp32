@@ -39,11 +39,12 @@ uint8_t RMT1::stateWorkDevice = 0x04;   // == RMT1::WS_CMD_STOP
 
 const char* RMT1::LOG_NAME = "RMT-1";
 
-const uint8_t RMT1::WS_OBJNAME_TRACK = 0x50;
-const uint8_t RMT1::WS_OBJNAME_SCENARIO = 0x51;
-const uint8_t RMT1::WS_OBJNAME_ENGINE = 0x52;
-const uint8_t RMT1::WS_OBJNAME_TOPLIGHT = 0x53;
-const uint8_t RMT1::WS_OBJNAME_WORK_DEVICE = 0x54;
+const uint8_t RMT1::WS_OBJ_NAME_DEVICE = 0x50;
+const uint8_t RMT1::WS_OBJ_NAME_TRACK = 0x51;
+const uint8_t RMT1::WS_OBJ_NAME_SCENARIO = 0x52;
+const uint8_t RMT1::WS_OBJ_NAME_ENGINE = 0x53;
+const uint8_t RMT1::WS_OBJ_NAME_TOPLIGHT = 0x54;
+const uint8_t RMT1::WS_OBJ_NAME_WORK_DEVICE = 0x55;
 
 const uint8_t RMT1::WS_CMD_READ = 0x01;
 const uint8_t RMT1::WS_CMD_WRITE = 0x02;
@@ -360,7 +361,33 @@ void RMT1::parseWsData(uint8_t *data, uint32_t length){
 
     // обработка входящих данных
     if(length == 16){
-        if(*(data) == WS_OBJNAME_TRACK){
+        if(*(data) == WS_OBJ_NAME_DEVICE){
+
+            uint8_t dataResp[48] = {0};
+            dataResp[0] = WS_OBJ_NAME_DEVICE;
+
+            dataResp[1] = EQUIPMENT_TYPE;
+            dataResp[2] = EQUIPMENT_SUBTYPE;
+
+            uint32_t version = (VERSION_MAJOR<<24) + (VERSION_MINOR<<16) + (VERSION_BUILD<<8) + (VERSION_REVISION);
+            memcpy((dataResp+3), &version, sizeof(uint32_t));
+
+
+            const char *equipmentTypeName = "RMT";
+            memcpy((dataResp+16), equipmentTypeName, std::min(16, (int)strlen(equipmentTypeName)));
+            const char *equipmentSubTypeName = "PROTOTYPE01";
+            memcpy((dataResp+32), equipmentSubTypeName, std::min(16, (int)strlen(equipmentSubTypeName)));
+
+            static WsData wsData = {
+                .size = 48,
+                // .data = (uint8_t *) &dataResp
+                .ptr = malloc(48)
+            };
+            memcpy(wsData.ptr, &dataResp, wsData.size);
+
+            // xQueueGenericSend(wsSendCustomEvtQueue, (void *) &wsData, (TickType_t) 0, queueSEND_TO_BACK);
+
+        } else if(*(data) == WS_OBJ_NAME_TRACK){
             if(*(data+1) == WS_CMD_WRITE){
                 uint8_t value = *(data+2);
                 printf("WS_OBJNAME_TRACK value: %d \n", value);
@@ -378,7 +405,7 @@ void RMT1::parseWsData(uint8_t *data, uint32_t length){
                 stopScenario(sc2);
             }
         }
-        else if(*(data) == WS_OBJNAME_SCENARIO){
+        else if(*(data) == WS_OBJ_NAME_SCENARIO){
             if(*(data+1) == WS_CMD_RUN){
                 uint8_t value = *(data+2);
                 printf("WS_OBJNAME_SCENARIO [RUN] value: %d \n", value);
@@ -392,7 +419,7 @@ void RMT1::parseWsData(uint8_t *data, uint32_t length){
                 else if(value == 2) stopScenario(sc2);
             }
         }
-        else if(*(data) == WS_OBJNAME_ENGINE){
+        else if(*(data) == WS_OBJ_NAME_ENGINE){
             if(*(data+1) == WS_CMD_WRITE){
                 uint8_t value = *(data+2);
                 printf("WS_OBJNAME_ENGINE value: %d \n", value);
@@ -401,7 +428,7 @@ void RMT1::parseWsData(uint8_t *data, uint32_t length){
                 if(value == WS_ENGINE_STARTER) setEngineState(STATE_ENGINE_START);
             }
         }
-        else if(*(data) == WS_OBJNAME_TOPLIGHT){
+        else if(*(data) == WS_OBJ_NAME_TOPLIGHT){
             if(*(data+1) == WS_CMD_WRITE){
                 uint8_t value = *(data+2);
                 printf("WS_OBJNAME_TOPLIGHT value: %d \n", value);
@@ -409,7 +436,7 @@ void RMT1::parseWsData(uint8_t *data, uint32_t length){
                 else if(value == WS_TOPLIGHT_ON) turnLightTop(true);
             }
         }
-        else if(*(data) == WS_OBJNAME_WORK_DEVICE){
+        else if(*(data) == WS_OBJ_NAME_WORK_DEVICE){
             uint8_t state = *(data+1);
             if(state == WS_CMD_RUN){
                 uint8_t dir = *(data+2);

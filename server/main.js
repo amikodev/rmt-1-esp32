@@ -8,11 +8,12 @@
 
 var app = (function(){
 
-    const OBJ_NAME_TRACK = 0x50;
-    const OBJ_NAME_SCENARIO = 0x51;
-    const OBJ_NAME_ENGINE = 0x52;
-    const OBJ_NAME_TOPLIGHT = 0x53;
-    const OBJ_NAME_WORK_DEVICE = 0x54;
+    const OBJ_NAME_DEVICE = 0x50;
+    const OBJ_NAME_TRACK = 0x51;
+    const OBJ_NAME_SCENARIO = 0x52;
+    const OBJ_NAME_ENGINE = 0x53;
+    const OBJ_NAME_TOPLIGHT = 0x54;
+    const OBJ_NAME_WORK_DEVICE = 0x55;
 
     const CMD_READ = 0x01;
     const CMD_WRITE = 0x02;
